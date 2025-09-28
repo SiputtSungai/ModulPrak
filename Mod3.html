@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil Pribadi</title>
+
+  <!--
+    <div> akan dipakai untuk mengelompokkan bagian (section) agar tata letak rapi.
+    CSS kecil di bawah hanya untuk mempercantik tampilan (opsional).
+  -->
+  <style>
+    :root { font-family: system-ui, Arial, sans-serif; line-height: 1.5; }
+    body { margin: 24px; }
+    .container { max-width: 920px; margin: 0 auto; }
+    header h1 { margin-bottom: 4px; }
+    .grid { display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start; }
+    figure { margin: 0; }
+    img { display: block; width: 180px; height: 180px; object-fit: cover; border-radius: 12px; background: #eee; }
+    video { width: 100%; max-width: 520px; border-radius: 12px; }
+    section { margin-top: 24px; }
+    table { border-collapse: collapse; width: 100%; max-width: 520px; }
+    th, td { border: 1px solid #999; padding: 8px 10px; text-align: left; }
+    th { background: #f4f4f4; }
+    form { display: grid; gap: 10px; max-width: 420px; }
+    label { font-weight: 600; }
+    input, textarea { padding: 8px 10px; border: 1px solid #bbb; border-radius: 8px; }
+    .actions { display: flex; gap: 10px; }
+    button { padding: 10px 14px; border: 0; border-radius: 10px; cursor: pointer; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-secondary { background: #e5e7eb; }
+    .links a { margin-right: .75rem; }
+    footer { margin-top: 28px; font-size: .95rem; color: #555; }
+  </style>
+</head>
+<body>
+  <div class="container"><!-- <div> sebagai pembungkus utama halaman -->
+
+    <header>
+      <h1>Profil Pribadi</h1>
+      <p>Contoh halaman sederhana untuk tugas “Profil Diri”.</p>
+    </header>
+
+    <section aria-labelledby="media">
+      <h2 id="media">Media</h2>
+
+      <div class="grid"><!-- <div> untuk membuat layout grid 2 kolom -->
+        <figure>
+          <!--
+            <img> menampilkan gambar.
+            Atribut alt penting untuk aksesibilitas / teks alternatif.
+          -->
+          <img src="FotoProfil.jpeg"
+               alt="Foto profil pengguna" />
+          <figcaption>Foto Profil</figcaption>
+        </figure>
+
+        <div>
+          <!--
+            <video> menampilkan video. controls menambah kontrol play/pause.
+            Anda dapat mengganti src dengan file lokal (mis. video.mp4).
+          -->
+          <video controls>
+            <source src="VideoSingkat.mp4" type="video/mp4" />
+            Browser Anda tidak mendukung pemutar video.
+          </video>
+          <p>Video Perkenalan Singkat</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="tentang">
+      <h2 id="tentang">Tentang Saya</h2>
+      <p>Halo! Saya seorang pengembang web yang antusias terhadap teknologi dan desain kreatif.</p>
+    </section>
+
+    <section aria-labelledby="keterampilan">
+      <h2 id="keterampilan">Keterampilan</h2>
+
+      <!--
+        <table> untuk data tabular.
+        <tr> baris tabel, <th> header kolom, <td> sel data.
+      -->
+      <table>
+        <thead>
+          <tr>
+            <th>Keterampilan</th><!-- <th> mendefinisikan sel judul kolom -->
+            <th>Tingkat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><!-- <tr> baris data -->
+            <td>HTML/CSS</td><!-- <td> sel data -->
+            <td>Pemula</td>
+          </tr>
+          <tr>
+            <td>JavaScript</td>
+            <td>Pemula</td>
+          </tr>
+          <tr>
+            <td>Python</td>
+            <td>Pemula</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="kontak">
+      <h2 id="kontak">Hubungi Saya</h2>
+
+      <!--
+        <form> membungkus kontrol input agar bisa dikirim.
+        action bisa diarahkan ke URL pemrosesan; method POST untuk kirim data.
+      -->
+      <form action="#" method="post">
+        <!-- <label> mengasosiasikan teks label dengan kontrol melalui for/id -->
+        <div>
+          <label for="nama">Nama</label>
+          <!--
+            <input> untuk isian satu baris (teks/email/dll).
+            type, name, id memudahkan validasi & pengolahan.
+          -->
+          <input type="text" id="nama" name="nama" placeholder="Nama lengkap" required />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="nama@contoh.com" required />
+        </div>
+
+        <div>
+          <label for="pesan">Pesan</label>
+          <!--
+            <textarea> untuk teks multi-baris.
+            rows menentukan tinggi awal.
+          -->
+          <textarea id="pesan" name="pesan" rows="4" placeholder="Tulis pesan Anda di sini..."></textarea>
+        </div>
+
+        <div class="actions">
+          <!--
+            <button> tombol aksi di dalam form.
+            type="submit" untuk kirim, type="reset" untuk mengosongkan.
+          -->
+          <button type="submit" class="btn-primary">Kirim Pesan</button>
+          <button type="reset" class="btn-secondary">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <section aria-labelledby="sosial">
+      <h2 id="sosial">Media Sosial</h2>
+      <p class="links">
+        <!--
+          <a> membuat tautan/anchor ke halaman lain.
+          target="_blank" membuka di tab baru; rel untuk keamanan.
+        -->
+        <a href="https://github.com/SiputtSungai/ModulPrak.git" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.instagram.com/siputtsungai?igsh=MXY5ZjRkaWg1bzZkcA==" target="_blank" rel="noopener">Instagram</a>
+      </p>
+    </section>
+
+    <footer>
+      <small>&copy; 2025 Nama Anda. Dibuat untuk latihan HTML dasar.</small>
+    </footer>
+
+  </div><!-- akhir <div> container -->
+</body>
+</html>
