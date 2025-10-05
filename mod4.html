@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tugas: Login + Navbar + Sections</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: "Poppins", sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ====== Login Page ====== */
+    .login-screen {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      background: #f3f4f6;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 380px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+      padding: 28px 24px 24px;
+      text-align: center;
+    }
+    .login-box h2 { margin: 0 0 18px; font-weight: 800; }
+    .login-box form { display: grid; gap: 12px; }
+    .login-box input {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #d1d5db;
+      background: #fafafa;
+      transition: background .2s, box-shadow .2s, border-color .2s;
+    }
+    .login-box input:focus {
+      outline: none;
+      background: #e5e7eb;
+      border-color: #9ca3af;
+      box-shadow: 0 0 0 4px rgba(156,163,175,.25);
+    }
+    .login-box button {
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 10px;
+      background: #e5e7eb;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, color .2s, transform .02s;
+    }
+    .login-box button:hover { background: #000; color: #fff; }
+    .login-box button:active { transform: translateY(1px); }
+
+    /* ====== Tab Container ====== */
+    .tabs { display: none; }
+    .tabs.active { display: block; }
+
+    /* ====== Navbar ====== */
+    .navbar {
+      background: #0a0a0a; color: #fff;
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { font-weight: 800; }
+    .nav { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+    .nav a { opacity: .9; transition: color .2s, opacity .2s; }
+    .nav a:hover { color: #ffe44d; opacity: 1; }
+
+    /* ====== Section Home ====== */
+    .section { padding: 28px 20px; }
+    #home .hero {
+      border-radius: 14px;
+      min-height: 300px;
+      background: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop") center/cover no-repeat;
+      display: grid; place-items: center;
+      position: relative;
+    }
+    #home .overlay { position: absolute; inset: 0; background: rgba(0,0,0,.35); }
+    #home .hero-inner { position: relative; text-align: center; color: #fff; padding: 30px; }
+    #home .hero-inner h1 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 10px; font-weight: 800; }
+    #home .hero-inner p { font-size: clamp(14px, 2.4vw, 18px); opacity: .95; }
+
+    /* ====== Section Collections ====== */
+    #collections h2 { font-size: clamp(22px, 3.5vw, 32px); margin: 6px 0 20px; font-weight: 800; }
+    .gallery { display: flex; flex-wrap: wrap; gap: 18px; }
+    .card { flex: 1 1 calc(25% - 18px); max-width: calc(25% - 18px); }
+    .card figure { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,.08); }
+    .card img { aspect-ratio: 16/10; width: 100%; object-fit: cover; }
+    .card figcaption { padding: 10px; text-align: center; font-weight: 600; }
+
+    @media (max-width: 1024px) {
+      .card { flex-basis: calc(33.333% - 18px); max-width: calc(33.333% - 18px); }
+    }
+    @media (max-width: 768px) {
+      .card { flex-basis: calc(50% - 18px); max-width: calc(50% - 18px); }
+    }
+    @media (max-width: 420px) {
+      .card { flex-basis: 100%; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Login Page ===== -->
+  <section class="login-screen" id="loginTab">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Tab Halaman Konten ===== -->
+  <div class="tabs" id="mainTab">
+    <header class="navbar">
+      <div class="brand">Ini Logo</div>
+      <ul class="nav">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <section class="section" id="home">
+        <div class="hero">
+          <div class="overlay"></div>
+          <div class="hero-inner">
+            <h1>Ini Text</h1>
+            <p>Lorem ipsum dolor sit amet take me back to the night we met.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="collections">
+        <h2>Collections</h2>
+        <div class="gallery">
+          <article class="card"><figure><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" alt="gambar 1" /><figcaption>ini gambar 1</figcaption></figure></article>
+          <article class="card"><figure><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop" alt="gambar 2" /><figcaption>ini gambar 2</figcaption></figure></article>
+          <article class="card"><figure><img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?q=80&w=1200&auto=format&fit=crop" alt="gambar 3" /><figcaption>ini gambar 3</figcaption></figure></article>
+          <article class="card"><figure><img src="https://images.unsplash.com/photo-1468083684825-012f39547bfb?q=80&w=1200&auto=format&fit=crop" alt="gambar 4" /><figcaption>ini gambar 4</figcaption></figure></article>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <h2>About</h2>
+        <p>.-.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const loginTab = document.getElementById('loginTab');
+    const mainTab = document.getElementById('mainTab');
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // cegah reload
+      loginTab.style.display = 'none'; // sembunyikan login
+      mainTab.classList.add('active'); // tampilkan tab utama
+    });
+  </script>
+</body>
+</html>
